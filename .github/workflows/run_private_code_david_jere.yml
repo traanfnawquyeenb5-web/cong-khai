@@ -223,6 +223,15 @@ jobs:
           python -m pip install --force-reinstall --no-deps "setuptools==80.9.0"
           python -c "import pkg_resources; print('pkg_resources OK')"
 
+
+      - name: Prepare subtitle fonts
+        working-directory: ${{ steps.find_script.outputs.dir }}
+        run: |
+          set -e
+          mkdir -p fonts
+          cp -v assets/fonts/FC-The-Bold-Font.otf fonts/
+          ls -la fonts
+
       - name: Run pipeline in PRIVATE
         working-directory: ${{ steps.find_script.outputs.dir }}
         run: |
